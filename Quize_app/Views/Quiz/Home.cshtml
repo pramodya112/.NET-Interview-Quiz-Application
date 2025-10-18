@@ -1,0 +1,236 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-container {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .welcome-card {
+        background: white;
+        border-radius: 24px;
+        padding: 50px 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        animation: fadeIn 0.6s ease;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .logo-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @@keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    h1 {
+        color: #2d3748;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        color: #718096;
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .info-box {
+        background: linear-gradient(135deg, #f7fafc, #edf2f7);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-left: 4px solid #667eea;
+    }
+
+        .info-box h3 {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+    .info-list {
+        text-align: left;
+        color: #4a5568;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        list-style: none;
+        padding: 0;
+    }
+
+        .info-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+            .info-list li:before {
+                content: "✓";
+                position: absolute;
+                left: 0;
+                color: #667eea;
+                font-weight: bold;
+            }
+
+    .form-group {
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .form-label {
+        display: block;
+        color: #2d3748;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+    .start-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        text-decoration: none;
+        padding: 18px 48px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        justify-content: center;
+    }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(102, 126, 234, 0.5);
+        }
+
+        .start-btn:active {
+            transform: translateY(0);
+        }
+
+        .start-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+    @@media (max-width: 768px) {
+        .welcome-card {
+            padding: 35px 25px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+        }
+
+        .start-btn {
+            padding: 16px 36px;
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<div class="home-container">
+    <div class="welcome-card">
+        <div class="logo-icon">💻</div>
+        <h1>.NET Interview Quiz</h1>
+        <p class="subtitle">Prepare for your .NET internship interview with this practice quiz</p>
+
+        <div class="info-box">
+            <h3>What to Expect:</h3>
+            <ul class="info-list">
+                <li>5 multiple-choice questions</li>
+                <li>Topics: C#, ASP.NET Core, and OOP concepts</li>
+                <li>Instant results with percentage score</li>
+                <li>Perfect for interview preparation</li>
+            </ul>
+        </div>
+
+        <form asp-controller="Quiz" asp-action="Index" method="post">
+            <div class="form-group">
+                <label class="form-label" for="candidateName">Your Name</label>
+                <input type="text"
+                       id="candidateName"
+                       name="candidateName"
+                       class="form-input"
+                       placeholder="Enter your full name"
+                       required
+                       minlength="2" />
+            </div>
+
+            <button type="submit" class="start-btn">
+                Start Quiz
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 10h12m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </form>
+    </div>
+</div>
