@@ -123,12 +123,18 @@ Quize_app/
 
 Home Page
 Professional welcome screen with candidate name entry
+<img width="1343" height="598" alt="image" src="https://github.com/user-attachments/assets/803c6b58-1bf5-4547-a01a-9e9218d6ee55" />
+
 
 Quiz Page
 Interactive questions with modern card design and hover effects
+<img width="1351" height="598" alt="image" src="https://github.com/user-attachments/assets/9586221f-bee2-4771-9d15-24895f4319f0" />
+
 
 Results Page
 Animated circular progress bar showing performance with detailed statistics
+![Uploading image.png…]()
+
 
 🤝 Contributing
 
